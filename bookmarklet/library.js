@@ -93,7 +93,7 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
                   <div class="recipe-save-form">\
                     <h1>##recipeData.name##</h1>\
                     <p>\
-                      rob &amp; save this cccrecipe to:\
+                      rob &amp; save this recipe to:\
                     </p>\
                     <span class="url">\
                       www.recipepirate.com/\
@@ -134,7 +134,8 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
         createPopup = function() {
         //<link rel="stylesheet" href="/static/CACHE/css/8d546a25a16d.css" type="text/css"
           loadStylesheet('http://fonts.googleapis.com/css?family=Wellfleet' + '&' + (Math.random() * 100000));
-          loadStylesheet('http://localhost/recipepirate/bookmarklet/takeover.css'  + '?' + (Math.random() * 100000));
+          captains.log(settings.pirateDomain + 'takeover.css'  + '?' + (Math.random() * 100000));
+          loadStylesheet(settings.pirateDomain + 'takeover.css'  + '?' + (Math.random() * 100000));
           
           //Yikes (different priorities): 
           popupReplaceHTML('settings.pirateDomain', settings.pirateDomain);
