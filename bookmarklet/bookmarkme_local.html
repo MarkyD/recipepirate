@@ -17,7 +17,7 @@
   }  
   function appendPirateRecipeScript() {  
     var script = document.createElement( 'script' );  
-    script.src = 'http://localhost/recipepirate/bookmarklet/library.js';
+    script.src = 'http://localhost/recipepirate/bookmarklet/library.js?' + (Math.random() * 100000);
     document.body.appendChild(script);
   }
 }());">Rob this Recipe locally!</a>

@@ -45,7 +45,8 @@
 			
 			#HijackThis .recipe-image {
 				float: left;				
-				margin-right: 20px;						
+				margin-right: 20px;
+        width: 276px;	
 			}
 			
 			#HijackThis .recipe-save-form {
@@ -115,3 +116,12 @@
 				-webkit-appearance:none;
 				font-family: Wellfleet;
 			}
+      
+      #HijackThis #recipe-pirate-output {
+        position: absolute;
+        z-index: 100;
+        width: 300px;
+        height: 200px;
+        top: 397px;
+        left: 25px;
+      }
