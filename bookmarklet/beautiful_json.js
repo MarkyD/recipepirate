@@ -4,7 +4,7 @@
         "name": "Zucchini Lasagna (Lasagne) - Low Carb",
         "url": "http://www.food.com/recipe/zucchini-lasagna-lasagne-low-carb-749",
         "prepTime": "PT20M",
-        "cookTime": "PT30M",
+        "cookTime": "PT30M", 
         "totalTime": "PT50M",
         "recipeYield": "1 (317 g)",
         "ingredients": [
