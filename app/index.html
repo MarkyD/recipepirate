@@ -24,49 +24,57 @@
 		</div>
 		<div class="page detail">
 		<header class="header">
-			<button class="button-back">Watch your back</button>
-			
+			<button class="button-back">< my recipes</button>			
 			<h1>Recipe title</h1>			
 		</header>
 		
 		<section class="steps" data-role="section-sidebar">
+			<div data-role="recipe-info">
+				<h1 data-role="recipe-title">
+					<!-- fill with title -->
+				</h1>
+				<img src="" class="recipe-image" data-role="recipe-image" alt="" /> <!-- fill with image -->
+				
+				<dl>
+					<dt>prep time</dt>
+					<dd data-role="preptime">
+						<!-- fill with preptime -->
+					</dd>
+					
+					<dt>cook time</dt>
+					<dd data-role="cooktime">
+						<!-- fill with cooktime -->
+					</dd>
+					
+					<dt>ready in</dt>
+					<dd data-role="totaltime">
+						<!-- fill with totaltime -->
+					</dd>
+				</dl>
+			</div>
 			
+			
+			<!-- Tab stuff -->
+			<ul data-role="ingredients">
+				<!-- fill with ingredients -->
+			</ul>
+			
+			<!-- Tab steps -->
 			<ol data-role="nav-steps">
-				<!--
-				<li>
-					<a href="#step1">Step 1</a>
-				</li>
-				<li>
-					<a href="#step2">Step 2</a>
-				</li>
-				<li>
-					<a href="#step3">Step 3</a>
-				</li>
-				<li>
-					<a href="#step4">Step 4</a>
-				</li>
-				-->
+				<!-- fill with steps -->
 			</ol>
 			
 		</section>
 		
 		<section class="recipe" data-role="section-content">
 			<div id="intro">
-								<div data-role="ingredients">
 					
-				</div>
 				<a href="#step1">To step 1!</a>
 				
 			</div>
 			
-			<div id="step1" class="instruction" data-role="inline-anchor">
-				This is step 1
-			</div>
-			<div id="step2" class="instruction" data-role="inline-anchor">
-				This is step 2
-			</div>
-			<div id="step3" class="instruction" data-role="inline-anchor">
-				This is step 3
+			<div data-role="recipe-steps">
+				<!-- fill with recipe steps -->
 			</div>
 			
 		</section>

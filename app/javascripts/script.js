@@ -5,11 +5,10 @@ var inlineScroll = (function(){
 	
 	function init(){
 		$sidebar = $('[data-role~="section-sidebar"]');
-		$content = $('[data-role~="section-content"]');
-		$inlineAnchors = $('[data-role~="inline-anchor"]');
+		$content = $('[data-role~="section-content"]');		
 		
 		setScreenDimensions();
-		setInlineScroll();
+		
 		
 		parseRecipe();
 	}
@@ -20,34 +19,67 @@ var inlineScroll = (function(){
 	
 	
 	function parseRecipe() {
-		console.log("parse recipe");
+
 		
 		
-		$.getJSON("http://localhost/recipepirate/bookmarklet/beautiful_json.js", function(data){
-			console.log(data);
-			//var forum = json.forum;
+		$.getJSON("http://localhost/recipepirate/bookmarklet/beautiful_json.js", function(data){			
+
 			
 			for (var i = 0; i < data.length; i++) {
 			    var object = data[i];
 			    for (property in object) {
 			        var value = object[property];
-			        
+							
+							if(property == "name"){
+								$('[data-role~="recipe-title"]').text(value);
+							}
+																
+							if(property == "image"){
+								$('[data-role~="recipe-image"]').attr("src",value);
+							}									
+										 
+							if(property == "prepTime"){
+								$('[data-role~="preptime"]').text(value);
+							}
+							if(property == "cookTime"){
+								$('[data-role~="cooktime"]').text(value);
+							}										 	
+							if(property == "totalTime"){
+								$('[data-role~="totaltime"]').text(value);
+							}										 									 
+										        
 			        if(property == "ingredients"){
-			        	$('[data-role~="'+property+'"]').html(value);
-			        }
-			        
-			         if(property == "recipeInstructions"){
-			        	$container = $('[data-role~="nav-steps"]');
-			        	for (i=0; i <property.length; i++) {
+			        	$container = $('[data-role~="ingredients"]');			        				        	
+			        	
+			        	$container.append("<li>"+value+"</li");/*
+			        	for (i=0; i < object[property].length; i++) {
 			        		var value = object[property][i];
-			        		console.log(value);
-			        	};
+			        		
+			        	};*/
 			        }
 			        
-			        console.log(property + "=" + value); 
+			        if(property == "recipeInstructions"){
+			        	$navContainer = $('[data-role~="nav-steps"]');
+			        	$contentContainer = $('[data-role~="recipe-steps"]');
+			        	
+			        	console.log($contentContainer);
+			        	
+			        	for (i=0; i < object[property].length; i++) {
+			        		var value = object[property][i];
+			        		$navContainer.append("<li><a href='#step"+(i+1)+"'>"+value.value+"</a></li");
+			        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'>"+value.value+"</div>");			        					        		
+			        	};
+			        }			        			        
 			    }
 			}
+		}).complete(function(){
+			
+			// set inline scroll
+			$inlineAnchors = $('[data-role~="inline-anchor"]');			
+			setInlineScroll();	
 		});
+		
+		
 	}
 	
 	function setScreenDimensions() {		
@@ -63,13 +95,12 @@ var inlineScroll = (function(){
 		topsArray = $inlineAnchors.map(function() {
     	return $(this).offset().top-80;  
     }).get();       
-				
+    					
 		// on click on a inline anchor
-		$('a[href*=#]').click(function(){
-				
-			var index = $("ol a").index(this);			
+		$('a[href*=#]').live("click", function(){							
+			var index = $(this).attr("href").match(/\d+/);			
       
-      $content.animate( {scrollTop: topsArray[index]}, { 'easing': 'swing', duration: 500 } );
+      $content.animate( {scrollTop: topsArray[index-1]}, { 'easing': 'swing', duration: 500 } );
 		});   
 	}
 	
