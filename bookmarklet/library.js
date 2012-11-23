@@ -10,11 +10,11 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
   if(!document.getElementById("log")) {
     var list = document.createElement("ul")
     list.setAttribute("id","log")
-    list.setAttribute("style","position:fixed;top:80%;left:10%;width:80%;height:20%;z-index:10000;margin:0;padding:0;font:80%/1 Consolas,monospace;white-space:pre-wrap;color:#000;background:rgba(255,255,0,.5);border:1px solid rgba(0,0,0,.2);overflow:scroll;-webkit-overflow-scrolling:touch;overflow-scrolling:touch;")
+    list.setAttribute("style","position:fixed;top:50%;left:10%;width:80%;height:50%;z-index:10000;margin:0;padding:0;font: 14px Consolas,monospace;white-space:pre-wrap;color:#000;background:rgba(255,255,0,.5);border:1px solid rgba(0,0,0,.2);overflow:scroll;-webkit-overflow-scrolling:touch;overflow-scrolling:touch;")
     document.body.appendChild(list)
     
     list.addEventListener('click', function(){
-      this.style.display = 'none'
+      //this.style.display = 'none'
     })
   }
 
@@ -48,26 +48,49 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
             onFoo: function() {} // default callback
         };
         
-        var recipeData = {
+        var recipeScheme = {
+          image: 'image',
+          name: 'text',
+          url: 'text',
+          url: 'text',
+          prepTime: 'duration',
+          cookTime: 'duration',
+          totalTime: 'duration',
+          recipeYield: 'text',
+          ingredients: 'ingredients', // array with filtering quantity (nth)
+          recipeInstructions: 'instructions', //possible parsing of steps and time per step
+          
+          //nice to have
+          description: 'text',
+          /*,
+          
           name: null,
           author: null,
           url: null,
           datePublished: null,
-          image:null,
+          
           description: null,
           prepTime: null,
           cookTime: null,
           recipeYield: null,
           nutrition: null, //TODO: later
-          ingredients: [],
+          //ingredients: [],
           recipeInstructions: null,
-          interactionCount: null
+          interactionCount: null*/
+        };
+        
+        var recipeData = {
+        
         };
         
         // (internal) settings
         var settings = {
-            active: 'ok'
+            searchElements: ['div', 'h1', 'h2', 'meta', 'span', 'img', 'li'],
+            searchString: '',
         };
+        
+        
+        
         
         // scoping helper inside events eg
         var plugin = this;
@@ -87,11 +110,57 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
         }
 
         this.scrape = function() {
-            var header = $('h1[itemprop="name"]');
+            /*var header = $('h1[itemprop="name"]');
             captains.log($('h1[itemprop="name"]').html());
             header.text('recipe robbed, arghh');
+            */
+            //alert(buildSearch('name') + '***');
             
-            recipeData.
+            for (var i in recipeScheme){
+              var $els = $(buildSearch(i));
+              var value = null;
+              switch (recipeScheme[i]){
+              
+                case 'image':
+                  //TODO: fix for sites with no absolute URL for images
+                  value = $els.attr('src');
+                  break;
+                  
+                case 'duration':
+                  value = $els.attr('content');
+                  break;
+
+                case 'ingredients':
+                  value = [];
+                  $els.each(function(index) {
+                      value.push($(this).text());
+                  });
+                  break;    
+
+                case 'instructions':
+                  value = [];
+                  var $list = $els.find('li div.txt'); //TODO: food.com specfic
+                  $list.each(function(index) {
+                      //captains.log($(this).text());
+                      value.push({value: $(this).text(), duration: 'PT50M'});
+                  });
+                  //captains.log(value);
+                  break;
+                  
+                default: //text
+                  value = $els.text();
+              }
+              recipeData[i] = value;
+              //$els.text('recipe robbed, arghh');
+            }
+            captains.log(recipeData);
+            //captains.log('***Captions.log: ' + new Date() + ': pirating library loaded***\n\n');
+        }
+        
+        //TODO preparsing is faster
+        var buildSearch = function(itemProp) {
+          var str = ['[itemprop="' + itemProp + '"]'];
+          return settings.searchElements.join(str + ',') + str;
         }
         
 
@@ -115,7 +184,7 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
 
 })(jQuery);
 
-captains.log('pirating library loaded');
+
 
 $('body').pirateRecipe({
 

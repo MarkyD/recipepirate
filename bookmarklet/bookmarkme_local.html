@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<h1>aaaaaaaaight</h1>
+<a href="javascript:(function () {  
+  if (!($ = window.jQuery)) {
+    script = document.createElement( 'script' );  
+    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+    script.onload=appendPirateRecipeScript;  
+    document.body.appendChild(script);
+  }
+  else {  
+    appendPirateRecipeScript();  
+  }  
+  function appendPirateRecipeScript() {  
+    var script = document.createElement( 'script' );  
+    script.src = 'http://localhost/recipepirate/bookmarklet/library.js';
+    document.body.appendChild(script);
+  }
+}());">Rob this Recipe locally!</a>
+</body>
+
+<script>
+  
+</script>
+</html>
