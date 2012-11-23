@@ -114,7 +114,7 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
         
         
         // scoping helper inside events eg
-        var plugin = this; 
+        var plugin = this;  
         
         // global element reference
         var $element = $(element),
