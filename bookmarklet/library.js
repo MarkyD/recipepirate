@@ -79,7 +79,7 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
             searchString: '',
             pirateDomain: document.location.toString().indexOf('localhost') != -1 ? 
               'http://localhost/recipepirate/bookmarklet/' : 
-              'http://staging.fabriquehq.nl/recipepirate/bookmarklet/',
+              'http://staging.fabriquehq.nl/recipepirate/mark/bookmarklet/',
             robbedRecipeImage: 'images/robbed_recipe.png'
         };
         
