@@ -10,7 +10,7 @@ javascript:(function () {
   }  
   function appendPirateRecipeScript() {  
     var script = document.createElement( 'script' );  
-    script.src = 'http://staging.fabriquehq.nl/recipepirate/mark/bookmarklet/library.js';
+    script.src = 'http://staging.fabriquehq.nl/recipepirate/mark/bookmarklet/library.js'+ (Math.random() * 100000);
     script.onload=function(){
       pirating.log('pirating library done');
     } 
