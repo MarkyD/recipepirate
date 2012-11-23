@@ -1,14 +1,15 @@
 var inlineScroll = (function(){
 	var $sidebar,
 		$content,
-		$inlineAnchors;
+		$inlineAnchors,
+		$tabLinks;
 	
 	function init(){
 		$sidebar = $('[data-role~="section-sidebar"]');
 		$content = $('[data-role~="section-content"]');		
 		
 		setScreenDimensions();
-		
+		setTabNavigation();
 		
 		parseRecipe();
 	}
@@ -19,9 +20,7 @@ var inlineScroll = (function(){
 	
 	
 	function parseRecipe() {
-
-		
-		
+			
 		$.getJSON("http://localhost/recipepirate/bookmarklet/beautiful_json.js", function(data){			
 
 			
@@ -35,7 +34,7 @@ var inlineScroll = (function(){
 							}
 																
 							if(property == "image"){
-								$('[data-role~="recipe-image"]').attr("src",value);
+								$('[data-role~="recipe-image"]').css("background-image","url('"+value+"')");
 							}									
 										 
 							if(property == "prepTime"){
@@ -49,13 +48,12 @@ var inlineScroll = (function(){
 							}										 									 
 										        
 			        if(property == "ingredients"){
-			        	$container = $('[data-role~="ingredients"]');			        				        	
+			        	$container = $('[data-role~="ingredients"]');			        				        				        	
 			        	
-			        	$container.append("<li>"+value+"</li");/*
 			        	for (i=0; i < object[property].length; i++) {
 			        		var value = object[property][i];
-			        		
-			        	};*/
+			        		$container.append("<li>"+value+"</li");
+			        	};
 			        }
 			        
 			        if(property == "recipeInstructions"){
@@ -66,7 +64,7 @@ var inlineScroll = (function(){
 			        	
 			        	for (i=0; i < object[property].length; i++) {
 			        		var value = object[property][i];
-			        		$navContainer.append("<li><a href='#step"+(i+1)+"'>"+value.value+"</a></li");
+			        		$navContainer.append("<li><a href='#step"+(i+1)+"'><span class='number'>"+(i+1)+"</span>"+value.value+"</a></li");
 			        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'>"+value.value+"</div>");			        					        		
 			        	};
 			        }			        			        
@@ -82,11 +80,41 @@ var inlineScroll = (function(){
 		
 	}
 	
+	function setTabNavigation(){
+		var $tabLinks = $('[data-role~="nav-tabs"] a');
+		
+		$tabLinks.live("click",function(ev) {
+			ev.preventDefault();
+			
+			var $this = $(this).attr("data-role");
+			
+			$('.open-tab').hide();
+			
+			if ($this == "link-info"){
+				$('[data-role~="recipe-info"]').show().addClass("open-tab");
+			}
+			
+			if($this == "link-stuff"){
+				$('[data-role~="ingredients"]').show().addClass("open-tab");
+			}
+			
+			if($this == "link-steps"){
+				$('[data-role~="nav-steps"]').show().addClass("open-tab");
+			}
+			
+			$tabLinks.removeClass("active");
+			$(this).addClass("active");
+		});
+	}
+	
 	function setScreenDimensions() {		
 		var windowHeight = $(window).height();
-				
+		var windowWidth = $(window).width();
+								
 		$sidebar.height(windowHeight - 80);
 		$content.height(windowHeight - 80);
+		
+		$content.width(windowWidth - 281);
 	}
 	
 	function setInlineScroll() {
