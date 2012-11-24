@@ -116,7 +116,6 @@ table {
 }());">Rob this Recipe!</a>
 	
 </div>	
-<h1>aaaaaaaaight</h1>
 
 </body>
 
