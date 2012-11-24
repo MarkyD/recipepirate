@@ -136,7 +136,7 @@ var inlineScroll = (function(){
               if (i == 1){
                 strBomb = "<div class='bomb'><span data-role='start-timer'>"+value.duration+"</span></div>";
               }
-	        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span>"+(i+1)+"</span><p>"+value.value+"</p>" + strBomb + "</div>");
+	        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span class='stepnr'>"+(i+1)+"</span><p>"+value.value+"</p>" + strBomb + "</div>");
               if (i == 1){
                 hoursToGo = 0;
                 minutesToGo = 0;
@@ -200,6 +200,9 @@ var inlineScroll = (function(){
 			setInlineScroll();	
 			
 			setNextStep();
+			
+			var count =$('[data-role~="recipe-steps"] .instruction').length;
+			$('[data-role~="steptotal"]').text("/"+count);
 		},1000);	
 		//});
 				
@@ -241,6 +244,8 @@ var inlineScroll = (function(){
 		  	
 		  	// set correct link in next-button
 		  	$(this).attr("href","#step"+(parseInt(index[0])+1));
+		  	
+		  	mast(parseInt(index[0]));
 		  			  	
 		  } else {
 		  	$button.fadeOut();
@@ -256,11 +261,34 @@ var inlineScroll = (function(){
 		  	var $smallNav = $('[data-role~="nav-steps"]').find('[href=#step'+parseInt(index[0]-1)+']');
 		  	$smallNav.animate({'color':'#D2D2D2'});
 		  	$smallNav.delay(500).queue(function() {
-		  		$(this).find("span").addClass("done");	
+		  		$(this).find("span.stepnr").addClass("done");	
 		  	});
+		  	
+		  	$('[data-role~="step"]').text("All");
+				$('[data-role~="steptotal"]').text("");
 		  }
 		   
 		});
+	}
+	
+	function mast(index){
+		console.log('index is'+index);
+		var $pirate = $('[data-role~="pirate-in-mast"]');
+		var stepsCount = $('[data-role~="recipe-steps"] .instruction').length;
+		var windowHeight = $(window).height();
+		console.log(stepsCount)		
+				
+		var step = (windowHeight-40-89)/stepsCount;
+		console.log("step is"+step);
+		
+		var slideDown = 40+(step*index);
+		console.log(slideDown);							
+				
+		$pirate.animate({'top':slideDown},500);		
+		
+		$('[data-role~="step"]').text(index-1);
+		$('[data-role~="steptotal"]').text("/"+stepsCount);
+		
 	}
 	
 	function setTabNavigation(){
@@ -294,11 +322,14 @@ var inlineScroll = (function(){
 		var windowHeight = $(window).height();
 		var windowWidth = $(window).width();
 								
+								
 		$sidebar.height(windowHeight - 100);
 		$content.height(windowHeight - 100);
 		$tab.height(windowHeight - 160);
 		
 		$content.width(windowWidth - 281);
+		
+		$('[data-role~="mast"]').height(windowHeight-18);
 	}
 	
 	function setInlineScroll() {
