@@ -48,35 +48,10 @@ if (isSet($_GET['username'])){
 				</h1>
 			</header>
 			
-			<ul class="recipes-list" data-role="recipes-list"><!--
-				<li>
-					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
-					<h2>Spanish omelette<br/>sdfsdfklj</h2>
-				</li>
-				<li>
-					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
-					<h2>Spanish omelette</h2>
-				</li>
-				<li>
-					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
-					<h2>Spanish omelette<br/>sdfsdfklj</h2>
-				</li>
-				<li>
-					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
-					<h2>Spanish omelette</h2>
-				</li>
-				<li>
-					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
-					<h2>Spanish omelette<br/>sdfsdfklj</h2>
-				</li>
-				<li>
-					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
-					<h2>Spanish omelette</h2>
-				</li>-->
+			<ul class="recipes-list" data-role="recipes-list">
 			</ul>
 			
-		<div class="intro">
-				
+			<div class="intro recipes-list-footer">			
 				<img src="../app/images/pirate-logo.png" alt="Recipe Pirate" />
 				
 				<h2>Roam the seas of food!!!</h2>

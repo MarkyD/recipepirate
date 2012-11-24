@@ -63,15 +63,15 @@ body.overview-page {
 }
 
 .overview {	
-	width: 1024px;
-	height: 1500px;
-	background: #382418 url('../images/overview-bg.jpg');
+	width: 1024px;	
+	/*background: #382418 url('../images/overview-bg.jpg');*/
 	margin: 0 auto;
 }
 
 .overview-header {
-	height: 270px;
+	height: 272px;
 	position: relative;
+	background-image: url('../images/perkament-top.png');
 }
 
 .overview-header h1 {
@@ -90,10 +90,11 @@ body.overview-page {
 .recipes-list {
 	overflow: hidden;
 	padding: 0 72px;
+	background: url('../images/perkament-middle.png') repeat-y;
 }
 
 .recipes-list li {
-	margin-bottom: 18px;
+	height: 292px;	
 	float: left;
 	margin-right: 24px;
 	cursor: pointer;
@@ -101,6 +102,11 @@ body.overview-page {
 
 .recipes-list li:nth-child(3n){
 	margin-right: 0;
+}
+
+.recipes-list-footer {
+	height: 352px;
+	background: url('../images/perkament-bottom.png');
 }
 
 .recipes-list .image {
