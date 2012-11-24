@@ -57,6 +57,23 @@ body {
 	overflow-y: hidden;
 }
 
+body.overview-page {
+	background: #382418;
+	overflow: visible;
+}
+
+.overview {	
+	width: 1024px;
+	height: 1500px;
+	background: #382418 url('../images/overview-bg.jpg');
+	margin: 0 auto;
+}
+
+/*
+ * 
+ * 
+ */
+
 .button-action {
 	height: 44px;
 	line-height: 44px;
@@ -90,6 +107,18 @@ body {
 	top: 0;
 	z-index: 5;
 	background: url('../images/header.png') repeat-x;
+}
+
+.left {
+    float: left;    
+  }
+
+.header-title {
+	font-size: 26px;
+	line-height: 44px;
+	float: left;
+	font-family: Wellfleet;
+	margin-left: 110px;
 }
 
 /*
@@ -250,6 +279,8 @@ body {
 	margin-top: 80px;
 	padding-top: 20px;
 	float: left;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 	-webkit-overflow-scrolling: touch;
 	overflow-y: scroll;	
 }

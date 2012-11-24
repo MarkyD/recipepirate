@@ -13,20 +13,23 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 		<link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="stylesheets/styles.css" />
+		<link rel="stylesheet" href="../app/stylesheets/styles.css" />
 		
-		<script src="javascripts/jquery-1.8.3.min.js" type="text/javascript"></script>
-		<script src="javascripts/backgroundcolor.js" type="text/javascript"></script>
-		<script src="javascripts/script.js" type="text/javascript"></script>				
+		<script src="../app/javascripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+		<script src="../app/javascripts/backgroundcolor.js" type="text/javascript"></script>
+		<script src="../app/javascripts/script.js" type="text/javascript"></script>				
 	</head>
 	
-	<body>
+	<body class="overview-page">
 		<div class="page overview">
 			
 		</div>
-		<div class="page detail">
+		
+		
+		<div class="page detail" style="display: none">
 		<header class="header">
-			<button class="button-action">< my recipes</button>									
+			<button class="button-action left">< my recipes</button>		
+			<h1 class="header-title" data-role="recipe-title"></h1>							
 		</header>
 		
 		<section class="section-sidebar" data-role="section-sidebar">

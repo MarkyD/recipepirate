@@ -171,7 +171,7 @@ var inlineScroll = (function(){
 		var windowWidth = $(window).width();
 								
 		$sidebar.height(windowHeight - 100);
-		$content.height(windowHeight - 80);
+		$content.height(windowHeight - 100);
 		$tab.height(windowHeight - 160);
 		
 		$content.width(windowWidth - 281);
@@ -181,7 +181,7 @@ var inlineScroll = (function(){
 		
 		// create array of all inline anchors
 		topsArray = $inlineAnchors.map(function() {
-    	return $(this).offset().top-80;  
+    	return $(this).offset().top-300;  
     }).get();       
     					
 		// on click on a inline anchor
