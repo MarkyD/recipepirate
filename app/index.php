@@ -32,8 +32,7 @@ if (isSet($_GET['username'])){
 		<link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="../app/stylesheets/styles.css" />
 		<script>
-      var recipes = [<?php echo $file;?>];
-      alert(recipes[0].url + recipes[1].name);
+      var recipes = [<?php echo $file;?>];      
     </script>
 		<script src="../app/javascripts/jquery-1.8.3.min.js" type="text/javascript"></script>
 		<script src="../app/javascripts/backgroundcolor.js" type="text/javascript"></script>
@@ -49,7 +48,7 @@ if (isSet($_GET['username'])){
 				</h1>
 			</header>
 			
-			<ul class="recipes-list">
+			<ul class="recipes-list" data-role="recipes-list"><!--
 				<li>
 					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
 					<h2>Spanish omelette<br/>sdfsdfklj</h2>
@@ -73,12 +72,12 @@ if (isSet($_GET['username'])){
 				<li>
 					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
 					<h2>Spanish omelette</h2>
-				</li>
+				</li>-->
 			</ul>
 			
-		`	<div class="intro">
+		<div class="intro">
 				
-				<img src="../app/images/pirate-logo-transp.png" alt="Recipe Pirate" />
+				<img src="../app/images/pirate-logo.png" alt="Recipe Pirate" />
 				
 				<h2>Roam the seas of food!!!</h2>
 				

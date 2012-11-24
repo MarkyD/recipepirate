@@ -84,6 +84,7 @@ body.overview-page {
 }
 .overview-header h1 span {
 	color: #000;
+	font-family: Wellfleet;
 }
 
 .recipes-list {
@@ -95,6 +96,7 @@ body.overview-page {
 	margin-bottom: 18px;
 	float: left;
 	margin-right: 24px;
+	cursor: pointer;
 }
 
 .recipes-list li:nth-child(3n){
@@ -115,6 +117,7 @@ body.overview-page {
 	font-family: Wellfleet;
 	font-size: 19px;
 	line-height: 1.33em;
+	width: 275px;
 }
 
 /*

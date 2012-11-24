@@ -12,14 +12,36 @@ var inlineScroll = (function(){
 		
 		setScreenDimensions();
 		setTabNavigation();
-		
+		parseOverview(recipes);
 		parseRecipe();
 	}
 	
 	$(document).ready(function(){
 		init();	
+		
 	});
 	
+	
+	function parseOverview(recipes){				
+		
+		var url = document.location.pathname;
+		var urlsplit = url.split("/");
+		var username = urlsplit[3];
+		
+		$('[data-role~="user-name"]').text(username+"'s");
+		
+		for (var i = 0; i < recipes.length; i++) {
+	    var object = recipes[i];
+			console.log(object);
+			$('[data-role~=recipes-list]').append('<li><div class="image" style="background-image: url('+object.image +')"></div><h2>'+ object.name+'</h2></li>');		  
+	  }  		    
+		
+		$('[data-role~=recipes-list] li').bind("click",navigateToDetail);    
+	}
+	
+	function navigateToDetail() {
+		console.log("navigate to detail");
+	};
 	
 	function parseRecipe() {
 			
