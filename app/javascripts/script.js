@@ -1,3 +1,10 @@
+
+var hoursToGo = 0;
+var minutesToGo = 27;
+var secondsToGo = 43;
+var startTime = new Date();       
+var endTime = new Date();
+
 var inlineScroll = (function(){
 	var $sidebar,
 		$content,
@@ -125,12 +132,63 @@ var inlineScroll = (function(){
 	        	for (i=0; i < object[property].length; i++) {
 	        		var value = object[property][i];
 	        		$navContainer.append("<li><a href='#step"+(i+1)+"'><span class='number'>"+(i+1)+"</span>"+value.value+"</a></li");
-	        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span>"+(i+1)+"</span><p>"+value.value+"</p><div class='bomb'><span data-role='start-timer'>"+value.duration+"</span></div></div>");
-											        					        					        		
+              var strBomb = '';
+              if (i == 1){
+                strBomb = "<div class='bomb'><span data-role='start-timer'>"+value.duration+"</span></div>";
+              }
+	        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span>"+(i+1)+"</span><p>"+value.value+"</p>" + strBomb + "</div>");
+              if (i == 1){
+                hoursToGo = 0;
+                minutesToGo = 0;
+                secondsToGo = 3;
+                startTime = new Date();  
+                endTime = new Date();
+                endTime.setHours(
+                    startTime.getHours() + hoursToGo,
+                    startTime.getMinutes() + minutesToGo, 
+                    startTime.getSeconds() + secondsToGo, 
+                    startTime.getMilliseconds()
+                );
+                update();
+              }
+
 	        	};
 	        }			        			        
 			    //}
 			};
+
+      
+
+
+
+  //function to update counter
+  function update(){
+      var currentTime = new Date();
+
+      var remainingTime = new Date();
+      remainingTime.setTime(endTime.getTime()-currentTime.getTime());
+      var hours = remainingTime.getHours();
+      var minutes = remainingTime.getMinutes();
+      var seconds = remainingTime.getSeconds();
+      if (minutes < 10){
+        minutes = '0' + minutes.toString();
+      }; 
+      if (seconds < 10){
+        seconds = '0' + seconds.toString();
+      }; 
+      var $el = $('[data-role~="start-timer"]');
+      $el.text(minutes+":"+seconds);
+      if (minutes == '00' && seconds == '00'){
+        $el.parent().addClass('exploded');
+        return;
+      }
+      //call itself every second
+      setTimeout(update,500);
+  }
+            
+
+      
+      
 		/*});
 		.complete(function(){*/
 		setTimeout(function(){			

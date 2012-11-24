@@ -427,6 +427,13 @@ body.overview-page {
 	font-family: Arial;
 	display: block;
 	color: #FFF;
+  text-align: right;
+}
+.steps .instruction .exploded{
+  background-image: url('../images/bomb_exploding.gif');
+}
+.steps .instruction.active .exploded{
+  background: url('../images/bomb_exploding.gif');
 }
 
 
