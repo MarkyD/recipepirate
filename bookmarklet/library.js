@@ -88,7 +88,7 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
           <div id="HijackThis">\
             <section class="perkament">\
               <form id="pirate-form" action="##settings.pirateDomain##" method="POST" target="_blank">\
-                <textarea name="output" id="recipe-pirate-output"></textarea>\
+                <textarea name="output" id="recipe-pirate-output" style="display:none;"></textarea>\
                 <div class="container">\
                   <img class="recipe-image" src="##recipeData.image##" alt="##recipeData.name##">\
                   <div class="recipe-save-form">\
@@ -164,7 +164,7 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
             /* Send the data using post and put the results in a div */
             $.post( url, { output: output },
               function( data ) {
-                  $("#pirate-form").html(data);
+                  /*$("#pirate-form").html(data);
                   $("#result-user-title").html(recipeData.name);
                   var userLink  = $("#result-user-link");
                   userLink.html('www.recipepirate.com/pirates/'  + settings.userName);
@@ -173,10 +173,38 @@ if( ('addEventListener' in window) && ('JSON' in window) ) {
                     function(){
                       $('#HijackThis').fadeOut();
                     }
-                  );
+                  );*/
                   
               }
             );
+            
+            //FIXME: no crossomain shite, faf
+            var resultHTML = '\
+              <div class="container">\
+                  <h1>Yarr!!!</h1>\
+                  <p>\
+                    The recipe <strong id="result-user-title"></strong>\
+                    has been robbed and saved!\
+                  </p>\
+                  <p>\
+                    You can find the kitchenfriendly view\
+                    at <a id="result-user-link" href="#"></a>\
+                  </p>\
+              </div>\
+              <div class="recipe-actions">\
+                <input type="button" id="button-whatever" class="button-action" value="Okay, whatever" />\
+              </div>';
+              $("#pirate-form").html(resultHTML);
+              $("#result-user-title").html(recipeData.name);
+              var userLink  = $("#result-user-link");
+              userLink.html('www.recipepirate.com/pirates/'  + settings.userName);
+              userLink.attr({'href': settings.pirateDomain + 'pirates/' + settings.userName});
+              $("#button-whatever").on('click',
+                function(){
+                  $('#HijackThis').fadeOut();
+                }
+              );
+                  
             //return false;
           });
         };
