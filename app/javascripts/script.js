@@ -3,17 +3,22 @@ var inlineScroll = (function(){
 		$content,
 		$inlineAnchors,
 		$tabLinks,
-		$tab;
+		$tab,
+		count,
+		timer;
 	
 	function init(){
 		$sidebar = $('[data-role~="section-sidebar"]');
 		$content = $('[data-role~="section-content"]');
 		$tab = $('[data-role~="tab"]');		
 		
+
 		setScreenDimensions();
 		setTabNavigation();
 		parseOverview(recipes);
 		
+		
+		//$('[data-role~="start-timer"]').live("click",handleTimer);
 		$('[data-role~="to-my-overview"]').live("click",backToOverview);		
 	}
 	
@@ -21,7 +26,21 @@ var inlineScroll = (function(){
 		init();	
 		
 	});
-	
+	/*
+	function handleTimer(count){
+		console.log(count);
+		
+  		if(count === 0) {
+		    clearInterval(timer);
+		    //endCountdown();
+		  } else {
+		    $('[data-role~="start-timer"]').html(count);
+		    count--;
+		  }
+				
+	}*/
+
+
 	
 	function parseOverview(recipes){				
 		
@@ -106,7 +125,7 @@ var inlineScroll = (function(){
 	        	for (i=0; i < object[property].length; i++) {
 	        		var value = object[property][i];
 	        		$navContainer.append("<li><a href='#step"+(i+1)+"'><span class='number'>"+(i+1)+"</span>"+value.value+"</a></li");
-	        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span>"+(i+1)+"</span><p>"+value.value+"</p></div>");
+	        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span>"+(i+1)+"</span><p>"+value.value+"</p><div class='bomb'><span data-role='start-timer'>"+value.duration+"</span></div></div>");
 											        					        					        		
 	        	};
 	        }			        			        

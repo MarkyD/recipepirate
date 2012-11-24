@@ -305,7 +305,7 @@ body.overview-page {
 }
 
 .nav-steps a {
-	width: 245px;
+	width: 235px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -405,3 +405,50 @@ body.overview-page {
 .steps .instruction p {
 	font-size: 38px;
 }
+
+.steps .instruction.active .bomb {	
+	background: url('../images/bomb_still.gif');
+}
+.steps .instruction .bomb {
+	position: relative;
+	float: right;
+	right: 0;
+	width: 209px;
+	height: 99px;
+	background: url('../images/bomb_still_white.gif');
+}
+.steps .instruction .bomb span{
+	position: absolute;
+	width: 146px;
+	height: 50px;
+	right: 10px;
+	top: 36px;
+	font-size: 45px;
+	font-family: Arial;
+	display: block;
+	color: #FFF;
+}
+
+
+/*
+ * 
+ * */
+.mast {
+	width: 64px;
+	height: 719px;
+	position: absolute;
+	left: 260px;
+	z-index: 15;
+	background: url('../images/mast.png') repeat-y;
+}
+
+.mast .pirate {
+	width: 59px;
+	height: 89px;
+	position: absolute;
+	top: 40px;
+	left: -2px;
+	display: block;
+	background: url('../images/pirate.png');
+}
+ 

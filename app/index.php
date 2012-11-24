@@ -35,7 +35,7 @@ if (isSet($_GET['username'])){
       var recipes = [<?php echo $file;?>];      
     </script>
 		<script src="../app/javascripts/jquery-1.8.3.min.js" type="text/javascript"></script>
-		<script src="../app/javascripts/backgroundcolor.js" type="text/javascript"></script>
+		<script src="../app/javascripts/backgroundcolor.js" type="text/javascript"></script>			
 		<script src="../app/javascripts/script.js" type="text/javascript"></script>	
 	</head>
 	
@@ -70,6 +70,10 @@ if (isSet($_GET['username'])){
 			<button class="button-action left" data-role="to-my-overview">< my recipes</button>		
 			<h1 class="header-title" data-role="recipe-title"></h1>							
 		</header>
+		
+		<section class="mast" data-role="mast">
+			<span class="pirate"></span>
+		</section>
 		
 		<section class="section-sidebar" data-role="section-sidebar">
 			<ul class="nav-tabs" data-role="nav-tabs">
