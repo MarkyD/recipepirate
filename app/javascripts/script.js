@@ -49,6 +49,9 @@ var inlineScroll = (function(){
 		
 		$('[data-role~="page-overview"]').hide();
 		$('body').removeClass("overview-page");
+		
+		
+		//$('[data-role~="page-detail"]').addClass("anim-in").show();		
 		$('[data-role~="page-detail"]').show();
 		
 	};
@@ -58,6 +61,7 @@ var inlineScroll = (function(){
 		$('body').addClass("overview-page");
 		$('[data-role~="page-overview"]').show();
 		
+		topsArray = [];
 		$('[data-role~="ingredients"],[data-role~="nav-steps"],[data-role~="recipe-steps"]').html("");		
 	}
 	
@@ -107,14 +111,16 @@ var inlineScroll = (function(){
 			};
 		/*});
 		.complete(function(){*/
+		setTimeout(function(){			
 			
 			$('#step1').addClass("active");
 			$content.append("<a href='#step2' data-role='next-step' class='button-action button-down'>Arr! Next step!</a>")
 			// set inline scroll
-			$inlineAnchors = $('[data-role~="inline-anchor"]');			
+			$inlineAnchors = $('[data-role~="inline-anchor"]');			  	
 			setInlineScroll();	
 			
 			setNextStep();
+		},1000);	
 		//});
 				
 	}
@@ -126,7 +132,7 @@ var inlineScroll = (function(){
 			// on click on a inline anchor
 							
 			var index = $(this).attr("href").match(/\d+/);			
-      
+
       $content.animate( {scrollTop: topsArray[index-1]}, { 'easing': 'swing', duration: 500 } );
 		  		  
 		  if(index[0] <= topsArray.length){

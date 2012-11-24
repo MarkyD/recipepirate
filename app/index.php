@@ -65,7 +65,7 @@ if (isSet($_GET['username'])){
 		</div>
 		
 		
-		<div class="page detail"  data-role="page-detail" style="display: none">
+		<div class="page detail"  data-role="page-detail">
 		<header class="header">
 			<button class="button-action left" data-role="to-my-overview">< my recipes</button>		
 			<h1 class="header-title" data-role="recipe-title"></h1>							
