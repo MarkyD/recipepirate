@@ -40,7 +40,7 @@ var inlineScroll = (function(){
 	}
 	
 	function navigateToDetail(ev) {
-		console.log("navigate to detail");
+		console.log("navigate to detail");					
 		
 		var index = $(ev.currentTarget).index();
 		
@@ -51,8 +51,10 @@ var inlineScroll = (function(){
 		$('body').removeClass("overview-page");
 		
 		
+		
 		//$('[data-role~="page-detail"]').addClass("anim-in").show();		
 		$('[data-role~="page-detail"]').show();
+		$('[data-role~="section-content"]').scrollTop(0);
 		
 	};
 	
@@ -62,6 +64,7 @@ var inlineScroll = (function(){
 		$('[data-role~="page-overview"]').show();
 		
 		topsArray = [];
+		$('[data-role~="next-step"]').remove();
 		$('[data-role~="ingredients"],[data-role~="nav-steps"],[data-role~="recipe-steps"]').html("");		
 	}
 	
@@ -128,9 +131,11 @@ var inlineScroll = (function(){
 	function setNextStep() {
 		$button = $('[data-role~="next-step"]');
 		
-		$button.live("click", function(){
+		$button.bind("click", function(ev){
 			// on click on a inline anchor
-							
+			ev.preventDefault();
+			
+							console.log('click');
 			var index = $(this).attr("href").match(/\d+/);			
 
       $content.animate( {scrollTop: topsArray[index-1]}, { 'easing': 'swing', duration: 500 } );
