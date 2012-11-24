@@ -13,7 +13,8 @@ var inlineScroll = (function(){
 		setScreenDimensions();
 		setTabNavigation();
 		parseOverview(recipes);
-		parseRecipe();
+		
+		$('[data-role~="to-my-overview"]').live("click",backToOverview);		
 	}
 	
 	$(document).ready(function(){
@@ -25,75 +26,88 @@ var inlineScroll = (function(){
 	function parseOverview(recipes){				
 		
 		var url = document.location.pathname;
-		var urlsplit = url.split("/");
-		var username = urlsplit[3];
+		var urlsplit = url.split("/");		
+		var username = urlsplit[urlsplit.length-1];
 		
 		$('[data-role~="user-name"]').text(username+"'s");
 		
 		for (var i = 0; i < recipes.length; i++) {
-	    var object = recipes[i];
-			console.log(object);
+	    var object = recipes[i];			
 			$('[data-role~=recipes-list]').append('<li><div class="image" style="background-image: url('+object.image +')"></div><h2>'+ object.name+'</h2></li>');		  
 	  }  		    
 		
 		$('[data-role~=recipes-list] li').bind("click",navigateToDetail);    
 	}
 	
-	function navigateToDetail() {
+	function navigateToDetail(ev) {
 		console.log("navigate to detail");
+		
+		var index = $(ev.currentTarget).index();
+		
+		
+		parseRecipe(recipes[index]);
+		
+		$('[data-role~="page-overview"]').hide();
+		$('body').removeClass("overview-page");
+		$('[data-role~="page-detail"]').show();
+		
 	};
 	
-	function parseRecipe() {
+	function backToOverview(){
+		$('[data-role~="page-detail"]').hide();
+		$('body').addClass("overview-page");
+		$('[data-role~="page-overview"]').show();
+		
+		$('[data-role~="ingredients"],[data-role~="nav-steps"],[data-role~="recipe-steps"]').html("");		
+	}
+	
+	function parseRecipe(object) {
+	    for (property in object) {
+	        var value = object[property];
+					
+					if(property == "name"){
+						$('[data-role~="recipe-title"]').text(value);
+					}
+														
+					if(property == "image"){
+						$('[data-role~="recipe-image"]').css("background-image","url('"+value+"')");
+					}									
+								 
+					if(property == "prepTime"){
+						$('[data-role~="preptime"]').text(value);
+					}
+					if(property == "cookTime"){
+						$('[data-role~="cooktime"]').text(value);
+					}										 	
+					if(property == "totalTime"){
+						$('[data-role~="totaltime"]').text(value);
+					}										 									 
+								        
+	        if(property == "ingredients"){
+	        	$container = $('[data-role~="ingredients"]');			        				        				        	
+	        	
+	        	for (i=0; i < object[property].length; i++) {
+	        		var value = object[property][i];
+	        		$container.append("<li>"+value+"</li");
+	        	};
+	        }
+	        
+	        if(property == "recipeInstructions"){
+	        	$navContainer = $('[data-role~="nav-steps"]');
+	        	$contentContainer = $('[data-role~="recipe-steps"]');
+	        	
+	        	for (i=0; i < object[property].length; i++) {
+	        		var value = object[property][i];
+	        		$navContainer.append("<li><a href='#step"+(i+1)+"'><span class='number'>"+(i+1)+"</span>"+value.value+"</a></li");
+	        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span>"+(i+1)+"</span><p>"+value.value+"</p></div>");
+											        					        					        		
+	        	};
+	        }			        			        
+			    //}
+			};
+		/*});
+		.complete(function(){*/
 			
-		$.getJSON("http://localhost/recipepirate/bookmarklet/beautiful_json.js", function(data){			
-
-			
-			for (var i = 0; i < data.length; i++) {
-			    var object = data[i];
-			    for (property in object) {
-			        var value = object[property];
-							
-							if(property == "name"){
-								$('[data-role~="recipe-title"]').text(value);
-							}
-																
-							if(property == "image"){
-								$('[data-role~="recipe-image"]').css("background-image","url('"+value+"')");
-							}									
-										 
-							if(property == "prepTime"){
-								$('[data-role~="preptime"]').text(value);
-							}
-							if(property == "cookTime"){
-								$('[data-role~="cooktime"]').text(value);
-							}										 	
-							if(property == "totalTime"){
-								$('[data-role~="totaltime"]').text(value);
-							}										 									 
-										        
-			        if(property == "ingredients"){
-			        	$container = $('[data-role~="ingredients"]');			        				        				        	
-			        	
-			        	for (i=0; i < object[property].length; i++) {
-			        		var value = object[property][i];
-			        		$container.append("<li>"+value+"</li");
-			        	};
-			        }
-			        
-			        if(property == "recipeInstructions"){
-			        	$navContainer = $('[data-role~="nav-steps"]');
-			        	$contentContainer = $('[data-role~="recipe-steps"]');
-			        	
-			        	for (i=0; i < object[property].length; i++) {
-			        		var value = object[property][i];
-			        		$navContainer.append("<li><a href='#step"+(i+1)+"'><span class='number'>"+(i+1)+"</span>"+value.value+"</a></li");
-			        		$contentContainer.append("<div id='step"+(i+1)+"' class='instruction' data-role='inline-anchor'><span>"+(i+1)+"</span><p>"+value.value+"</p></div>");
-													        					        					        		
-			        	};
-			        }			        			        
-			    }
-			}
-		}).complete(function(){
 			$('#step1').addClass("active");
 			$content.append("<a href='#step2' data-role='next-step' class='button-action button-down'>Arr! Next step!</a>")
 			// set inline scroll
@@ -101,7 +115,7 @@ var inlineScroll = (function(){
 			setInlineScroll();	
 			
 			setNextStep();
-		});
+		//});
 				
 	}
 	

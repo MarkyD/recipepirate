@@ -40,7 +40,7 @@ if (isSet($_GET['username'])){
 	</head>
 	
 	<body class="overview-page">
-		<div class="page overview">
+		<div class="page overview" data-role="page-overview">
 			<header class="overview-header">
 				<h1 class="overview-title">
 					<span data-role="user-name"><!-- Fill --></span>
@@ -90,9 +90,9 @@ if (isSet($_GET['username'])){
 		</div>
 		
 		
-		<div class="page detail"  style="display: none">
+		<div class="page detail"  data-role="page-detail" style="display: none">
 		<header class="header">
-			<button class="button-action left">< my recipes</button>		
+			<button class="button-action left" data-role="to-my-overview">< my recipes</button>		
 			<h1 class="header-title" data-role="recipe-title"></h1>							
 		</header>
 		
