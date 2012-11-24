@@ -1,3 +1,20 @@
+<?php
+//yikes oll dirty php
+$recipes = '';
+if (isSet($_GET['username'])){
+  $userName = $_GET['username'];
+  
+  $file = @file_get_contents('../recipes/'.$userName.'.js');
+  if ($file){
+    $file;
+  }
+  else {
+    print 'username not found';
+    die();
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,10 +31,13 @@
 
 		<link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="../app/stylesheets/styles.css" />
-		
+		<script>
+      var recipes = [<?php echo $file;?>];
+      alert(recipes[0].url + recipes[1].name);
+    </script>
 		<script src="../app/javascripts/jquery-1.8.3.min.js" type="text/javascript"></script>
 		<script src="../app/javascripts/backgroundcolor.js" type="text/javascript"></script>
-		<script src="../app/javascripts/script.js" type="text/javascript"></script>				
+		<script src="../app/javascripts/script.js" type="text/javascript"></script>	
 	</head>
 	
 	<body class="overview-page">
