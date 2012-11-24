@@ -26,7 +26,7 @@
 		</div>
 		
 		
-		<div class="page detail" style="display: none">
+		<div class="page detail"  style="display: none">
 		<header class="header">
 			<button class="button-action left">< my recipes</button>		
 			<h1 class="header-title" data-role="recipe-title"></h1>							
@@ -87,11 +87,11 @@
 		<section class="recipe" data-role="section-content">
 			<div class="intro">
 				
-				<img src="images/pirate-logo.png" alt="Recipe Pirate" />
+				<img src="../app/images/pirate-logo.png" alt="Recipe Pirate" />
 				
 				<h2>Roll up yar sleeves, matey...<br />Time to start!</h2>
 				
-				<img src="images/arrow-down.png" alt="Start cooking matey" />				
+				<img src="../app/images/arrow-down.png" alt="Start cooking matey" />				
 			</div>
 			
 			<div data-role="recipe-steps" class="steps">
@@ -100,11 +100,11 @@
 
 			<div class="intro">
 				
-				<img src="images/pirate-logo.png" alt="Recipe Pirate" />
+				<img src="../app/images/pirate-logo.png" alt="Recipe Pirate" />
 				
 				<h2>You made it to shore, sailor!<br />It should look like this. Arrr!</h2>
 				
-				<img src="images/arrow-down.png" alt="Start cooking matey" />			
+				<img src="../app/images/arrow-down.png" alt="Start cooking matey" />			
 				
 				<div class="recipe-image" data-role="recipe-image" ></div>	
 			</div>

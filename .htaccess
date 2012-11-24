@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^pirates/([a-zA-Z0-9]+)$ app/lala.php?username=$1 [L]
+RewriteRule ^pirates/([a-zA-Z0-9]+)$ app/index.php?username=$1 [L]

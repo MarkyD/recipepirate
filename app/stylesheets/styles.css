@@ -294,6 +294,7 @@ body.overview-page {
 	padding: 30px 0 30px 30px;
 	overflow: hidden;
 	position: relative;
+	-webkit-transform: translate3d(0,0,0);
 }
 
 .steps .instruction.active {
