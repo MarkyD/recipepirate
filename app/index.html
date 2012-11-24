@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="stylesheets/styles.css" />
 		
 		<script src="javascripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+		<script src="javascripts/backgroundcolor.js" type="text/javascript"></script>
 		<script src="javascripts/script.js" type="text/javascript"></script>				
 	</head>
 	
@@ -25,8 +26,7 @@
 		</div>
 		<div class="page detail">
 		<header class="header">
-			<button class="button-back">< my recipes</button>			
-			<h1>Recipe title</h1>			
+			<button class="button-action">< my recipes</button>									
 		</header>
 		
 		<section class="section-sidebar" data-role="section-sidebar">
@@ -42,12 +42,12 @@
 				</li>
 			</ul>
 			
-			<div class="tab">
+			<div class="tab" data-role="tab">
 				<div class="recipe-info open-tab" data-role="recipe-info">
 					<h1 class="recipe-title" data-role="recipe-title">
 						<!-- fill with title -->
 					</h1>
-					<img src="" class="recipe-image" data-role="recipe-image" alt="" /> <!-- fill with image -->
+					<div class="recipe-image" data-role="recipe-image"></div> <!-- fill with image -->
 					
 					<dl>
 						<dt>prep time</dt>
@@ -82,15 +82,30 @@
 		</section>
 		
 		<section class="recipe" data-role="section-content">
-			<div id="intro">
-					
-				<a href="#step1">To step 1!</a>
+			<div class="intro">
 				
+				<img src="images/pirate-logo.png" alt="Recipe Pirate" />
+				
+				<h2>Roll up yar sleeves, matey...<br />Time to start!</h2>
+				
+				<img src="images/arrow-down.png" alt="Start cooking matey" />				
 			</div>
 			
-			<div data-role="recipe-steps">
+			<div data-role="recipe-steps" class="steps">
 				<!-- fill with recipe steps -->
 			</div>
+
+			<div class="intro">
+				
+				<img src="images/pirate-logo.png" alt="Recipe Pirate" />
+				
+				<h2>You made it to shore, sailor!<br />It should look like this. Arrr!</h2>
+				
+				<img src="images/arrow-down.png" alt="Start cooking matey" />			
+				
+				<div class="recipe-image" data-role="recipe-image" ></div>	
+			</div>
+
 			
 		</section>
 		</div>
