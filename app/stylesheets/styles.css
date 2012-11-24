@@ -199,7 +199,7 @@ body.overview-page {
 	line-height: 44px;
 	float: left;
 	font-family: Wellfleet;
-	margin-left: 110px;
+	margin-left: 136px;
 }
 
 /*
@@ -440,6 +440,12 @@ body.overview-page {
 	left: 260px;
 	z-index: 15;
 	background: url('../images/mast.png') repeat-y;
+}
+
+.mast-top {
+	width: 64px;
+	height: 47px;
+	background: url('../images/mast-top.png') repeat;
 }
 
 .mast .pirate {

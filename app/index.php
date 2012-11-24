@@ -72,6 +72,7 @@ if (isSet($_GET['username'])){
 		</header>
 		
 		<section class="mast" data-role="mast">
+			<div class="mast-top"></div>
 			<span class="pirate"></span>
 		</section>
 		
