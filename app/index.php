@@ -22,7 +22,52 @@
 	
 	<body class="overview-page">
 		<div class="page overview">
+			<header class="overview-header">
+				<h1 class="overview-title">
+					<span data-role="user-name"><!-- Fill --></span>
+					pirated recipes
+				</h1>
+			</header>
 			
+			<ul class="recipes-list">
+				<li>
+					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
+					<h2>Spanish omelette<br/>sdfsdfklj</h2>
+				</li>
+				<li>
+					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
+					<h2>Spanish omelette</h2>
+				</li>
+				<li>
+					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
+					<h2>Spanish omelette<br/>sdfsdfklj</h2>
+				</li>
+				<li>
+					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
+					<h2>Spanish omelette</h2>
+				</li>
+				<li>
+					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
+					<h2>Spanish omelette<br/>sdfsdfklj</h2>
+				</li>
+				<li>
+					<div class="image" style="background-image: url(http://food.sndimg.com/img/recipes/74/9/large/picy1PrJz.jpg)"></div>
+					<h2>Spanish omelette</h2>
+				</li>
+			</ul>
+			
+		`	<div class="intro">
+				
+				<img src="../app/images/pirate-logo-transp.png" alt="Recipe Pirate" />
+				
+				<h2>Roam the seas of food!!!</h2>
+				
+				<p>
+					Recipe Pirate is built, designed and conceived <br/> 
+					by pirates Rrroelf-Jan, Marrrk, Patrrrictk &amp; Pieterrr <br/> 
+					from <a href="http://www.q42.nl" target="_blank">Q42</a> and <a href="http://www.fabrique.nl" target="_blank">Fabrique</a>
+				</p>					
+			</div>
 		</div>
 		
 		
