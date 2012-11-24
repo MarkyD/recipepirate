@@ -428,7 +428,9 @@ body.overview-page {
 	display: block;
 	color: #FFF;
 }
-
+.steps .instruction .bomb span.done{
+	background: none;
+}
 
 /*
  * 
@@ -437,15 +439,29 @@ body.overview-page {
 	width: 64px;
 	height: 719px;
 	position: absolute;
+	top: 18px;
 	left: 260px;
 	z-index: 15;
 	background: url('../images/mast.png') repeat-y;
 }
 
+
+
 .mast-top {
 	width: 64px;
-	height: 47px;
+	height: 42px;
 	background: url('../images/mast-top.png') repeat;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.mast-top span {
+	color: white;
+	font-size: 18px;
+	font-weight: bold;	
+}
+.mast-top span:last-child {
+	font-size: 12px;
 }
 
 .mast .pirate {
